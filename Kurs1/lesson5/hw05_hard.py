@@ -1,15 +1,15 @@
 # Задание-1:
 # Матрицы в питоне реализуются в виде вложенных списков:
 # Пример. Дано:
-matrix = [[1, 0, 8],
-          [3, 4, 1],
-          [0, 4, 2]]
+#matrix = [[1, 0, 8],
+#         [3, 4, 1],
+#         [0, 4, 2]]
 
 # Выполнить поворот (транспонирование) матрицы
 # Пример. Результат:
-# matrix_rotate = [[1, 3, 0],
-#                  [0, 4, 4],
-#                  [8, 1, 2]]
+ matrix_rotate = [[1, 3, 0],
+                  [0, 4, 4],
+                  [8, 1, 2]]
 
 # Суть сложности hard: Решите задачу в одну строку
 
@@ -48,17 +48,19 @@ number = """
 
 from functools import reduce
 number = number.replace("\n", "")
-n = list(number)
+
 index = 0
 _index = 4
 y = 1
+max_index = 0
 
 while True:
     l = []
     for i in range(index, _index + 1):
-        l.append(int(n[i]))
-        s = reduce(lambda n, y: n * y, l)
+        l.append(int(number[i]))
+        s = reduce(lambda number, y: int(number) * int(y), l)
         if s > y:
+            max_index = index
             y = s
 
     index += 1
@@ -66,11 +68,9 @@ while True:
     if _index == 1000:
         break
 print("Произведение:", y)
+print("Индекс cдвига первой цифры:", max_index)
 
-import re
-regex_num = re.compile('99879')
-a = regex_num.search(number)
-print("Индекс первого числа последовательности:", a.start())
+
 
 
 
